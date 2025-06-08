@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>User List | Odin Prisma Test</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+      body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        background: #f4f8fb;
+        margin: 0;
+        padding: 0;
+      }
+      main {
+        max-width: 750px;
+        margin: 2.5rem auto;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 16px rgba(76, 175, 80, 0.08);
+        padding: 2.5rem 2rem 2rem 2rem;
+      }
+      h1 {
+        text-align: center;
+        color: #388e3c;
+        letter-spacing: 1px;
+        margin-bottom: 1.5rem;
+      }
+      table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        margin-top: 2rem;
+        background: #fafafa;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      th,
+      td {
+        padding: 1rem 0.75rem;
+        text-align: left;
+      }
+      th {
+        background: #e8f5e9;
+        color: #388e3c;
+        font-weight: 600;
+        border-bottom: 2px solid #c8e6c9;
+      }
+      tr {
+        transition: background 0.2s;
+      }
+      tr:hover {
+        background: #f1f8e9;
+      }
+      .avatar {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: #c8e6c9;
+        color: #388e3c;
+        font-weight: bold;
+        font-size: 1.1rem;
+        margin-right: 0.75rem;
+        box-shadow: 0 1px 2px rgba(76, 175, 80, 0.07);
+      }
+      .user-link {
+        display: flex;
+        align-items: center;
+        color: #388e3c;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+      .user-link:hover {
+        color: #1b5e20;
+        text-decoration: underline;
+      }
+      .no-users {
+        text-align: center;
+        color: #888;
+        margin: 2.5rem 0;
+        font-size: 1.1rem;
+      }
+      .back-link {
+        display: block;
+        text-align: center;
+        margin-top: 2.5rem;
+        color: #4caf50;
+        font-weight: 500;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .back-link:hover {
+        color: #1b5e20;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>👥 User List</h1>
+      <% if (users && users.length > 0) { %>
+      <table>
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% users.forEach(function(user) { const initials =
+          (user.first_name?.[0] || '') + (user.last_name?.[0] || ''); %>
+          <tr>
+            <td>
+              <span class="avatar"><%= initials.toUpperCase() %></span>
+              <%= user.first_name %> <%= user.last_name %>
+            </td>
+            <td><%= user.email %></td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+      <% } else { %>
+      <div class="no-users">No users found.</div>
+      <% } %>
+      <a class="back-link" href="/">← Back to Dashboard</a>
+    </main>
+  </body>
+</html>

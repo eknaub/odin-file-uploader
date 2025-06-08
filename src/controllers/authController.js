@@ -72,6 +72,23 @@ const authController = {
       error: null,
     });
   },
+
+  getUsersList: async (req, res, next) => {
+    try {
+      const users = await prisma.users.findMany({
+        select: {
+          id: true,
+          email: true,
+          first_name: true,
+          last_name: true,
+        },
+      });
+      res.render("users", { users });
+    } catch (error) {
+      console.error(error);
+      next(error);
+    }
+  },
 };
 
 module.exports = authController;

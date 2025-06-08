@@ -10,5 +10,10 @@ router.get("/log-in", authController.getLogInForm);
 router.post("/sign-up", authController.signUp);
 router.post("/log-in", authController.logIn);
 router.get("/log-out", authMiddleware.isAuthenticated, authController.logOut);
+router.get(
+  "/users",
+  authMiddleware.isAuthenticated,
+  authController.getUsersList
+);
 
 module.exports = router;

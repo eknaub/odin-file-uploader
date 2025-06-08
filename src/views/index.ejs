@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
+    <title>Home | Odin Prisma Test</title>
     <link rel="stylesheet" href="/styles.css" />
     <style>
       body {
@@ -13,59 +13,60 @@
         background-color: #f9f9f9;
         color: #333;
       }
-
       header {
         background-color: #4caf50;
         color: white;
         padding: 1rem;
         text-align: center;
       }
-
       header h1 {
         margin: 0;
         font-size: 2rem;
       }
-
       header p {
         margin: 0.5rem 0 0;
       }
-
       header a {
         color: #fff;
         text-decoration: underline;
       }
-
       main {
         max-width: 800px;
         margin: 2rem auto;
-        padding: 1rem;
+        padding: 2rem;
         background: white;
         border-radius: 8px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       }
-
-      h2 {
-        color: #4caf50;
-        margin-bottom: 1rem;
+      .dashboard {
+        margin-top: 2rem;
       }
-
-      ul {
+      .dashboard ul {
         list-style-type: none;
         padding: 0;
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
       }
-
-      li {
+      .dashboard li {
         background: #f1f1f1;
-        margin: 0.5rem 0;
-        padding: 1rem;
+        padding: 1rem 2rem;
         border-radius: 5px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        transition: background 0.2s;
       }
-
-      li strong {
+      .dashboard li:hover {
+        background: #e0f7e9;
+      }
+      .dashboard a {
         color: #4caf50;
+        text-decoration: none;
+        font-weight: bold;
       }
-
+      .dashboard a:hover {
+        text-decoration: underline;
+      }
       footer {
         text-align: center;
         padding: 1rem;
@@ -79,10 +80,10 @@
   </head>
   <body>
     <header>
-      <h1>Welcome to the Node.js Application</h1>
+      <h1>Odin Prisma Test Application</h1>
       <% if (user) { %>
       <p>
-        Logged in as
+        Welcome,
         <strong><%= user.first_name %> <%= user.last_name %></strong>
         (<%= user.email %>) |
         <a href="/log-out">Log out</a>
@@ -92,10 +93,22 @@
       <% } %>
     </header>
     <main>
-      <p>Hello.</p>
+      <h2>Dashboard</h2>
+      <p>
+        <%= user ? "Here are some things you can do:" : "Welcome to the Odin" %>
+      </p>
+      <div class="dashboard">
+        <ul>
+          <% if (user) { %>
+          <li><a href="/users">User List</a></li>
+          <% } else { %>
+          <li><a href="/sign-up">Create an Account</a></li>
+          <% } %>
+        </ul>
+      </div>
     </main>
     <footer>
-      <p>&copy; 2025 Node.js Application</p>
+      <p>&copy; 2025 Odin Prisma Test Application</p>
     </footer>
   </body>
 </html>
